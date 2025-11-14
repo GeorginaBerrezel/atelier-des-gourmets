@@ -1,0 +1,145 @@
+:root {
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --muted: #c7c7c7;
+  --brand: #cda867; /* or #cda867 */
+  --accent: #245c2a;
+  --focus: #F6FEDE;
+
+  /* Header sombre */
+  --header-bg: #30383B;
+  --header-fg: #f5f5f5;
+  --header-fg-muted: #d9d9d9;
+  --header-sep: rgba(255,255,255,.08);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #333333;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
+html:focus-within { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+a { color: var(--brand); text-decoration-thickness: .1em; }
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.container { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+
+/* ===== HEADER SOMBRE, PLUS GROS ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  color: var(--header-fg);
+  border-bottom: 1px solid var(--header-sep);
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  /* plus épais */
+  padding-block: 1rem;
+}
+.header .container {
+  display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+}
+.header img { display: block; height: 70px; width: auto; max-width: 100%; }
+
+/* Nav */
+.header nav ul {
+  list-style: none; display: flex; gap: 2rem; padding: 0; margin: 0; flex-wrap: wrap;
+}
+.header nav a {
+  color: var(--header-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+  text-decoration: none;
+}
+.header nav a:hover,
+.header nav a[aria-current="page"] { color: var(--header-fg); }
+
+/* Skip link inchangé mais contrasté sur fond sombre */
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: #fff; color: #000; padding: .5rem 1rem; z-index: 1000; text-decoration: none;
+}
+.skip-link:focus { top: 0; }
+
+.hero {
+  display: grid; gap: 1rem; align-items: center;
+  grid-template-columns: 1fr;
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+/* heures */
+.hours-list { list-style: none; padding: 0; margin: 0; }
+.hours-row { display: grid; grid-template-columns: 8rem 1fr; gap: .75rem; padding: .25rem 0; border-bottom: 1px dashed color-mix(in oklab, var(--fg) 20%, transparent); }
+.hours-row:last-child { border-bottom: 0; }
+.hours-day { text-transform: capitalize; font-weight: 600; }
+.hours-slots, .hours-slot { white-space: nowrap; }
+@media (max-width: 480px) {
+  .hours-row { grid-template-columns: 1fr; }
+  .hours-slots { white-space: normal; }
+}
+.hours-note { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
+
+
+@media (min-width: 900px) {
+  .hero { grid-template-columns: 1.2fr 1fr; }
+}
+
+.card {
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: .75rem; padding: 1rem;
+  background: rgba(255,255,255,.03);
+}
+@media (prefers-color-scheme: light) {
+  .card {
+    border-color: rgba(0,0,0,.12);
+    background: rgba(0,0,0,.02);
+  }
+}
+
+.grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+footer {
+  border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 3rem; padding-block: 2rem;
+}
+@media (prefers-color-scheme: light) {
+  footer { border-top-color: rgba(0,0,0,.12); }
+}
+
+small, time { color: var(--muted); }
+
+.btn {
+  display: inline-block; padding: .75rem 1rem;
+  background: var(--brand); color: #111; font-weight: 700; border-radius: .5rem;
+}
+.btn:hover { filter: saturate(1.2); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
