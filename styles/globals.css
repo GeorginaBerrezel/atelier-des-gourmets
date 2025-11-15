@@ -759,3 +759,62 @@ time {
   font-size: 0.9rem;
   color: var(--muted);
 }
+
+/* ==== APERÇU DU MENU SUR LA HOME ==== */
+
+.home-menu-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.home-menu-preview-title {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.home-menu-preview-items {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .home-menu-preview-items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-menu-preview-item h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.home-menu-preview-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.home-menu-preview-desc {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.home-menu-preview-note {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.home-menu-preview-image {
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.home-menu-preview-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

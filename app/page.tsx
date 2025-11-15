@@ -68,6 +68,79 @@ export default function Page() {
               Voir le menu
             </Link>
           </div>
+
+          <div
+            className="home-menu-preview card"
+            aria-label="Aperçu de quelques plats du menu"
+          >
+            <h2 className="home-menu-preview-title">
+              Un aperçu de la carte
+            </h2>
+            <div className="home-menu-preview-items">
+              <div className="home-menu-preview-item">
+                <div className="home-menu-preview-image">
+                  <Image
+                    src="/images/menu/carpaccio-de-poulpe-marine.jpeg"
+                    alt="Carpaccio de poulpe mariné"
+                    width={400}
+                    height={260}
+                    sizes="(max-width: 700px) 100vw, 33vw"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
+                <h3>Entrée</h3>
+                <p className="home-menu-preview-name">
+                  Carpaccio de poulpe mariné
+                </p>
+                <p className="home-menu-preview-desc">
+                  Fines tranches de poulpe, assaisonnement frais et citronné.
+                </p>
+              </div>
+
+              <div className="home-menu-preview-item">
+                <div className="home-menu-preview-image">
+                  <Image
+                    src="/images/menu/risotto-de-la-mer-creme-de-roquette-pesto.jpeg"
+                    alt="Risotto de la mer, crème de roquette et pesto"
+                    width={400}
+                    height={260}
+                    sizes="(max-width: 700px) 100vw, 33vw"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
+                <h3>Plat</h3>
+                <p className="home-menu-preview-name">
+                  Risotto de la mer
+                </p>
+                <p className="home-menu-preview-desc">
+                  Crème de roquette, pesto maison et poissons de l&apos;arrivage.
+                </p>
+              </div>
+
+              <div className="home-menu-preview-item">
+                <div className="home-menu-preview-image">
+                  <Image
+                    src="/images/menu/fungo.jpeg"
+                    alt="Pizza Fungo"
+                    width={400}
+                    height={260}
+                    sizes="(max-width: 700px) 100vw, 33vw"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
+                <h3>Pizza</h3>
+                <p className="home-menu-preview-name">
+                  Pizza Fungo
+                </p>
+                <p className="home-menu-preview-desc">
+                  Champignons frais, mozzarella fondante et pâte maison.
+                </p>
+              </div>
+            </div>
+            <p className="home-menu-preview-note">
+              Carte susceptible de varier selon la saison et l’arrivage.
+            </p>
+          </div>
         </div>
 
         {/* COLONNE DROITE */}
