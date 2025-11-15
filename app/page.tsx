@@ -1,56 +1,143 @@
 import Image from "next/image";
 import Link from "next/link";
+import { site } from "@/lib/site";
+import { toWaNumber, toTelHref } from "@/lib/phone";
 
 export default function Page() {
+  const waNumber = toWaNumber(site.telephone);
+  const waHref = `https://wa.me/${waNumber}`;
+  const telHref = `tel:${toTelHref(site.telephone)}`;
+
   return (
     <>
-      <section className="hero">
-        <div>
-          <h1>Atelier des Gourmets</h1>
-          <p>Restaurant à Ayent. Cuisine de saison, pizzas et plats du jour. Réservation par téléphone.</p>
-          <p><Link className="btn" href="/menu">Voir le menu</Link></p>
-        </div>
-        <div className="card">
+      <section
+        className="hero-banner"
+        aria-label="Salle du restaurant à Ayent"
+      >
+        <div className="hero-banner-image">
           <Image
-          src="/images/cover-l-atelier-des-gourmets.jpeg"
-          alt="Salle du restaurant à Ayent"
-          width={1200}
-          height={800}
-          priority
-          sizes="(max-width: 900px) 100vw, 50vw"
-          style={{ width: "100%", height: "auto" }}
-        />
+            src="/images/cover-l-atelier-des-gourmets.jpeg"
+            alt="Salle du restaurant à Ayent"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       </section>
 
-      <section className="grid" aria-labelledby="sections">
-        <h2 id="sections" className="visually-hidden">Sections principales</h2>
-        <article className="card">
-          <h3>Entrées</h3>
-          <p>Produits frais, recettes de saison.</p>
-        </article>
-        <article className="card">
-          <h3>Plats</h3>
-          <p>Classiques revisités et spécialités de la maison.</p>
-        </article>
-        <article className="card">
-          <h3>Pizzas</h3>
-          <p>Pâte maison, cuisson soignée.</p>
-        </article>
+      <section className="home-intro" aria-labelledby="home-intro-title">
+        {/* COLONNE GAUCHE */}
+        <div className="home-intro-text">
+          <h1 id="home-intro-title">Atelier des Gourmets</h1>
+
+          <p>
+            Restaurant à Ayent, entre cuisine de saison, plats signature
+            et spécialités valaisannes.
+          </p>
+
+          <p>
+            Réservation au{" "}
+            <a href={telHref}>{site.telephone}</a>{" "}
+            ou directement par WhatsApp.
+          </p>
+
+          <p>
+            Vous pouvez aussi nous écrire via le{" "}
+            <Link href="/contact">formulaire de contact</Link>.
+          </p>
+
+          <div className="home-intro-actions">
+            <a
+              className="btn btn-outline home-wa-btn"
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/icons/whatsapp.svg"
+                alt=""
+                width={18}
+                height={18}
+                style={{ marginRight: ".5rem" }}
+              />
+              Réserver via WhatsApp
+            </a>
+
+            <Link className="btn" href="/menu">
+              Voir le menu
+            </Link>
+          </div>
+        </div>
+
+        {/* COLONNE DROITE */}
+        <div className="home-intro-form">
+          <h2>Notre salle</h2>
+
+          <p className="home-intro-form-caption">
+            Le chalet où l’on se sent bien dès la première minute : ambiance douce,
+            coin feu qui réchauffe l’hiver, terrasse baignée de soleil face aux
+            montagnes.
+          </p>
+
+          <p className="home-intro-form-caption">
+            On y partage des moments simples et chaleureux, autour d’une cuisine
+            faite maison et servie avec attention.
+          </p>
+
+          <p className="home-intro-form-caption">
+            Une parenthèse gourmande à la montagne, en famille, entre amis ou juste
+            pour le plaisir.
+          </p>
+
+          <div className="home-team-photo">
+            <Image
+              src="/images/salle-l-atelier-du-gourmet.jpeg"
+              alt="Salle du restaurant à l’Atelier des Gourmets"
+              width={900}
+              height={600}
+              sizes="(max-width: 900px) 100vw, 40vw"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "0.75rem",
+              }}
+            />
+          </div>
+        </div>
       </section>
 
-      <section className="card" aria-labelledby="adresse">
-        <h2 id="adresse">Adresse</h2>
-        <p><strong>Route de Botyre 30 – 1966 Ayent</strong></p>
-        <p>Téléphone : <a href="tel:+41273981496">+41 27 398 14 96</a></p>
-        <div className="card" style={{padding:0}} aria-label="Carte Google Maps intégrée">
+      {/* SECTION ADRESSE */}
+      <section className="card home-address" aria-labelledby="adresse">
+        <h2 id="adresse">Nous trouver</h2>
+
+        <p>
+          <strong>Route de Botyre 30 – 1966 Ayent</strong>
+        </p>
+
+        <p>
+          Téléphone : <a href={telHref}>{site.telephone}</a>
+        </p>
+
+        <div
+          className="card"
+          style={{ padding: 0 }}
+          aria-label="Carte Google Maps intégrée"
+        >
           <iframe
             title="Itinéraire vers L’atelier des Gourmets"
-            width="100%" height="360" loading="lazy"
+            width="100%"
+            height="360"
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Route%20de%20Botyre%2030%2C%201966%20Ayent&output=embed">
-          </iframe>
+            src="https://www.google.com/maps?q=Route%20de%20Botyre%2030%2C%201966%20Ayent&output=embed"
+          />
         </div>
+
+        <p className="home-address-note">
+          Le restaurant est situé à Ayent (Botyre), facilement accessible en
+          voiture. Parking à proximité.
+        </p>
       </section>
     </>
   );

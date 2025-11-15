@@ -634,3 +634,128 @@ time {
   margin: 0.25rem 0 0;
   font-size: 0.95rem;
 }
+
+/* ==== HOME / HERO BANNIÈRE ==== */
+
+.hero-banner {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.hero-banner-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0 0 1.25rem 1.25rem;
+  height: 180px;
+}
+
+@media (min-width: 700px) {
+  .hero-banner-image {
+    height: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-banner-image {
+    height: 300px;
+  }
+}
+
+/* ==== HOME INTRO + CONTACT ==== */
+
+.home-intro {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 1rem 2rem;
+}
+
+@media (min-width: 900px) {
+  .home-intro {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: flex-start;
+  }
+}
+
+.home-intro-text p {
+  margin: 0.35rem 0;
+}
+
+.home-intro-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.home-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-intro-form {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (prefers-color-scheme: light) {
+  .home-intro-form {
+    background: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.home-intro-form-caption {
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.home-intro-form form {
+  margin-top: 0;
+}
+
+/* ==== HOME SECTIONS ==== */
+
+.home-sections {
+  padding-block: 1rem 2rem;
+}
+
+.home-sections-subtitle {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.home-sections-grid {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .home-sections-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-sections-grid h3 {
+  margin-bottom: 0.25rem;
+}
+
+.home-sections-cta {
+  margin-top: 1.25rem;
+}
+
+/* ==== HOME ADRESSE ==== */
+
+.home-address {
+  margin-bottom: 2.5rem;
+}
+
+.home-address-note {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
