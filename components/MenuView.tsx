@@ -5,12 +5,26 @@ import MenuCard, { MenuItem } from "./MenuCard";
 
 type Category = { id: string; label: string; items: MenuItem[] };
 
+// garder cohérent avec --header-height dans globals.css
+const HEADER_OFFSET = 80; // px
+
 export default function MenuView({ categories }: { categories: Category[] }) {
   const tabs: Tab[] = categories.map((c) => ({ id: c.id, label: c.label }));
 
   const handleChange = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el || typeof window === "undefined") return;
+
+    const rect = el.getBoundingClientRect();
+    const absoluteY = rect.top + window.scrollY;
+
+    // on laisse un petit espace sous le header
+    const targetY = Math.max(0, absoluteY - HEADER_OFFSET - 8);
+
+    window.scrollTo({
+      top: targetY,
+      behavior: "smooth",
+    });
   };
 
   return (

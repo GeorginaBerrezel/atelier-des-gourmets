@@ -1,37 +1,46 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export type Tab = { id: string; label: string };
 
 type Props = {
   tabs: Tab[];
-  onChange: (id: string) => void;
+  onChange?: (id: string) => void;
 };
 
 export default function MenuTabs({ tabs, onChange }: Props) {
-  const [active, setActive] = useState<string | undefined>(tabs[0]?.id);
+  const firstId = tabs[0]?.id ?? "";
+  const [active, setActive] = useState<string>(firstId);
 
-  useEffect(() => {
-    if (active) onChange(active);
-  }, [active, onChange]);
+  const handleClick = (id: string) => {
+    setActive(id);
+    if (onChange) onChange(id);
+  };
+
+  if (!tabs.length) return null;
 
   return (
-    <div className="tabs" role="tablist" aria-label="Catégories du menu">
-      {tabs.map((t) => (
-        <button
-          key={t.id}
-          role="tab"
-          aria-selected={active === t.id}
-          className={active === t.id ? "tab active" : "tab"}
-          onClick={() => setActive(t.id)}
-        >
-          {t.label}
-          {active === t.id && (
-            <span className="underline" aria-hidden="true" />
-          )}
-        </button>
-      ))}
+    <div
+      className="menu-tabs"
+      role="tablist"
+      aria-label="Catégories du menu"
+    >
+      {tabs.map((tab) => {
+        const isActive = active === tab.id;
+        return (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            className={isActive ? "tab tab--active" : "tab"}
+            onClick={() => handleClick(tab.id)}
+          >
+            {tab.label}
+          </button>
+        );
+      })}
     </div>
   );
 }
