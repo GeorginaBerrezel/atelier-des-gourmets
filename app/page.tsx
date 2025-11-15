@@ -65,7 +65,7 @@ export default function Page() {
             </a>
 
             <Link className="btn" href="/menu">
-              Voir le menu
+              Voir la carte
             </Link>
           </div>
 
@@ -137,6 +137,9 @@ export default function Page() {
                 </p>
               </div>
             </div>
+            <Link className="btn" href="/menu">
+              Voir la carte
+            </Link>
             <p className="home-menu-preview-note">
               Carte susceptible de varier selon la saison et l’arrivage.
             </p>
