@@ -556,3 +556,81 @@ time {
 .menu-section {
   scroll-margin-top: calc(var(--header-height) + 8px);
 }
+
+/* ==== AVIS CLIENTS (style type Google) ==== */
+
+.reviews-grid {
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .review-card {
+    background: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.review-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-avatar-fallback {
+  font-weight: 600;
+}
+
+.review-author {
+  font-weight: 600;
+}
+
+.review-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.review-stars {
+  font-weight: 600;
+}
+
+.review-rating-value {
+  opacity: 0.9;
+}
+
+.review-time {
+  opacity: 0.9;
+}
+
+.review-text {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
