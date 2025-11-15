@@ -17,7 +17,3 @@ node_modules/
 .DS_Store
 .vscode/
 .idea/
-
-# Images générées
-public/images/menu/*
-!public/images/menu/placeholder.svg
